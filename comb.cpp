@@ -64,8 +64,8 @@ double get_cpu_time() {
 
 struct node {
 	int n;
-	int degree;			//degree of the vertex in the subgraph induced by R (changing as R is updated)
-	int ex_deg;			//sum of "degree" of the vertices adjacent to this vertex in the subgraph induced by R (See definition of ex_deg(q) in Tomita(2007) page 101)
+	int degree;	//degree of the vertex in the subgraph induced by R (changing as R is updated)
+	int ex_deg;	//sum of "degree" of the vertices adjacent to this vertex in the subgraph induced by R (See definition of ex_deg(q) in Tomita(2007) page 101)
 };
 
 bool degCmp(node const & a, node const & b)
@@ -97,8 +97,8 @@ int* sortV(double** Adj, int & Delta) {
 		}
 		R.push_back(v);
 	}
-	Delta = dlt;								//inputs Delta and change its value in the function after calculating the degree of all vertices
-	sort(R.begin(), R.end(), degCmp);			//sorts "node"s in R in descending order of "degree"
+	Delta = dlt;	//inputs Delta and change its value in the function after calculating the degree of all vertices
+	sort(R.begin(), R.end(), degCmp);	//sorts "node"s in R in descending order of "degree"
 	int minDeg = (R.end() - 1)->degree;
 	vector<node>::iterator itr = R.end() - 1;
 	while (itr->degree == minDeg) {
@@ -110,7 +110,7 @@ int* sortV(double** Adj, int & Delta) {
 			itr--;
 		}
 	}
-	node p;										//the "node" with the minimum "ex_deg" among nodes in Rmin
+	node p;		//the "node" with the minimum "ex_deg" among nodes in Rmin
 	for (int k = N - 1; k >= 0; k--) {
 		if (Rmin.size() == 1) {
 			p = Rmin[0];
@@ -124,7 +124,7 @@ int* sortV(double** Adj, int & Delta) {
 					}
 				}
 			}
-			sort(Rmin.begin(), Rmin.end(), ex_degCmp);				//sorts "node"s in Rmin in ascending order of "ex_deg"
+			sort(Rmin.begin(), Rmin.end(), ex_degCmp);	//sorts "node"s in Rmin in ascending order of "ex_deg"
 			p = Rmin[0];
 		}
 		V[k] = p.n;
