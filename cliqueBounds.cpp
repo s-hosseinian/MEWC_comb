@@ -1,18 +1,11 @@
 /*________________________________________________________________________________________________________________
 |                                                                                                                 |
 |                                                                                                                 |
-|                  Analytic Bounds on Clique Number of Graphs + Vertex coloring of Tomita&Kameda                  |
+|               Analytic Bounds on Clique Number of Graphs + Vertex Coloring of Tomita&Kameda (2007)              |
 |                                                                                                                 |
-|                                ***  Seyedmohammadhossein Hosseinian, 2018  ***                                  |
+|                    Copyright (c) 2018 Seyedmohammadhossein Hosseinian. All rights reserved.                     |
 |                                                                                                                 |
-|_________________________________________________________________________________________________________________|
-
-
- *********  READ ME  **********************************************************************************************
-
-  (1) 
-
- *****************************************************************************************************************/
+|_________________________________________________________________________________________________________________*/
 
 #include <iostream>
 #include <fstream>
@@ -118,8 +111,8 @@ int clock_gettime(int X, struct timeval *tv) {
 
 struct node {
 	int n;
-	int degree;			//degree of the vertex in the subgraph induced by R (changing as R is updated)
-	int ex_deg;			//sum of "degree" of the vertices adjacent to this vertex in the subgraph induced by R (See definition of ex_deg(q) in Tomita(2007) page 101)
+	int degree;
+	int ex_deg;	//See definition of ex_deg(q) in Tomita(2007) page 101
 };
 
 bool degCmp(node const & a, node const & b)
@@ -151,8 +144,8 @@ int* sortV(double** Adj, int & Delta, int N) {
 		}
 		R.push_back(v);
 	}
-	Delta = dlt;								//inputs Delta and change its value in the function after calculating the degree of all vertices
-	sort(R.begin(), R.end(), degCmp);			//sorts "node"s in R in descending order of "degree"
+	Delta = dlt;
+	sort(R.begin(), R.end(), degCmp);
 	int minDeg = (R.end() - 1)->degree;
 	vector<node>::iterator itr = R.end() - 1;
 	while (itr->degree == minDeg) {
@@ -164,7 +157,7 @@ int* sortV(double** Adj, int & Delta, int N) {
 			itr--;
 		}
 	}
-	node p;										//the "node" with the minimum "ex_deg" among nodes in Rmin
+	node p;
 	for (int k = N - 1; k >= 0; k--) {
 		if (Rmin.size() == 1) {
 			p = Rmin[0];
@@ -178,7 +171,7 @@ int* sortV(double** Adj, int & Delta, int N) {
 					}
 				}
 			}
-			sort(Rmin.begin(), Rmin.end(), ex_degCmp);				//sorts "node"s in Rmin in ascending order of "ex_deg"
+			sort(Rmin.begin(), Rmin.end(), ex_degCmp);
 			p = Rmin[0];
 		}
 		V[k] = p.n;
