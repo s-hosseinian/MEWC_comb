@@ -2,7 +2,7 @@
 
 # A Lagrangian Bound on the Clique Number and an Exact Algorithm for MEWC
 
-This repository contains the code accompanying the following paper:
+This repository contains the code accompanying the following article:
 
 > **S. Hosseinian, D.B.M.M. Fontes and S. Butenko. [A Lagrangian Bound on the Clique Number and an Exact Algorithm for the Maximum Edge Weight Clique Problem.](https://doi.org/10.1287/ijoc.2019.0898) _INFORMS Journal on Computing 32.3 (2020): 747-762_.**
 
